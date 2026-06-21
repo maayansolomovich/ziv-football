@@ -28,7 +28,7 @@ export function Txt({ style, weight, ...rest }: TextProps & { weight?: keyof typ
       <Text
         {...rest}
         style={[
-          { fontFamily: FONT[weight ?? 'reg'], color: C.t1, textAlign: 'right', writingDirection: 'rtl', flex: 1 },
+          { fontFamily: FONT[weight ?? 'reg'], color: C.t1, textAlign: 'center', flex: 1 },
           textExtras,
         ]}
       />
@@ -131,7 +131,17 @@ export function Chip({
       }}
     >
       <View style={{ width: 6, height: 6, borderRadius: 3, backgroundColor: solid ? '#06120c' : color }} />
-      <Text style={{ fontFamily: FONT.semi, fontSize: 11, color: solid ? '#06120c' : color }}>{text}</Text>
+      <Text
+        style={{
+          fontFamily: FONT.semi,
+          fontSize: 11,
+          color: solid ? '#06120c' : color,
+          textAlign: 'right',
+          writingDirection: 'rtl',
+        }}
+      >
+        {text}
+      </Text>
     </View>
   )
 }

@@ -87,6 +87,7 @@ export function Players() {
             <View style={{ flex: 1 }}>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 7 }}>
                 <Txt weight="semi" style={{ fontSize: 15, flex: 1 }}>{p.name}</Txt>
+                {p.tmUrl?.trim() ? <Feather name="link" size={13} color={C.green} /> : null}
                 {p.expSoon ? <View style={{ width: 7, height: 7, borderRadius: 4, backgroundColor: C.red }} /> : null}
               </View>
               <Txt style={{ fontSize: 12.5, color: C.t3, marginTop: 2 }} numberOfLines={1}>

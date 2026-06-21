@@ -23,6 +23,7 @@ export interface Player {
   phone: string
   ig: string
   email: string
+  tmUrl: string
   photos: string[]
 }
 
@@ -66,6 +67,7 @@ export function emptyPlayer(): Omit<Player, 'id'> {
     phone: '—',
     ig: '',
     email: '',
+    tmUrl: '',
     photos: [],
   }
 }

@@ -19,7 +19,7 @@ function toForm(p: Player): FormState {
     goals: String(p.goals || ''), assists: String(p.assists || ''), apps: String(p.apps || ''),
     salary: String(p.salary || ''), fee: String(p.fee || ''),
     contractStartFull: p.contractStartFull ?? '', contractEnd: p.contractEnd ?? '',
-    phone: p.phone === '—' ? '' : p.phone, ig: p.ig,
+    phone: p.phone === '—' ? '' : p.phone, ig: p.ig, tmUrl: p.tmUrl,
   }
 }
 
@@ -71,6 +71,7 @@ export function Editor() {
       expSoon: signed && !!ceY && ceY <= 2026,
       phone: str('phone').trim() || '—',
       ig: str('ig').trim(),
+      tmUrl: str('tmUrl').trim(),
       email: '',
       photos: editing?.photos ?? [],
     }
@@ -186,6 +187,8 @@ export function Editor() {
         <Input value={str('phone')} onChangeText={(v) => set('phone', v)} placeholder="050-0000000" keyboardType="phone-pad" />
         <Lbl t="אינסטגרם" style={{ marginTop: 12 }} />
         <Input value={str('ig')} onChangeText={(v) => set('ig', v)} placeholder="@username" />
+        <Lbl t="קישור Transfermarkt" style={{ marginTop: 12 }} />
+        <Input value={str('tmUrl')} onChangeText={(v) => set('tmUrl', v)} placeholder="https://www.transfermarkt.com/..." keyboardType="url" autoCapitalize="none" />
 
         {editing && (
           <TouchableOpacity onPress={del} style={{ marginTop: 24, padding: 14, borderRadius: 14, borderWidth: 1, borderColor: 'rgba(255,93,108,0.4)', alignItems: 'center' }}>

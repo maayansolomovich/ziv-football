@@ -1,5 +1,5 @@
 import 'react-native-url-polyfill/auto'
-import { DevSettings, I18nManager } from 'react-native'
+import { I18nManager } from 'react-native'
 import * as Updates from 'expo-updates'
 import { registerRootComponent } from 'expo'
 
@@ -11,9 +11,7 @@ import App from './App'
 I18nManager.allowRTL(true)
 if (!I18nManager.isRTL) {
   I18nManager.forceRTL(true)
-  if (__DEV__) {
-    DevSettings.reload()
-  } else {
+  if (!__DEV__) {
     Updates.reloadAsync().catch(console.error)
   }
 }

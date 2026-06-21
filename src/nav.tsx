@@ -1,6 +1,6 @@
 import React, { createContext, useCallback, useContext, useRef, useState } from 'react'
 
-export type Tab = 'home' | 'players' | 'studio'
+export type Tab = 'home' | 'players' | 'scout' | 'studio'
 export type View = Tab | 'profile' | 'editor'
 
 interface NavState {

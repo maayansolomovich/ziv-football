@@ -26,9 +26,13 @@ create table if not exists public.ziv_players (
   phone text default '—',
   ig text default '',
   email text default '',
+  tm_url text default '',
   photos jsonb not null default '[]'::jsonb,
   created_at timestamptz not null default now()
 );
+
+-- Backfill for tables created before tm_url existed.
+alter table public.ziv_players add column if not exists tm_url text default '';
 
 -- No login yet (lean, 2 users): allow the anon key full access, governed by RLS.
 alter table public.ziv_players enable row level security;

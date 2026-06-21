@@ -32,6 +32,7 @@ type Row = {
   phone: string
   ig: string
   email: string
+  tm_url: string | null
   photos: string[] | null
   created_at?: string
 }
@@ -61,6 +62,7 @@ const toPlayer = (r: Row): Player => ({
   phone: r.phone ?? '—',
   ig: r.ig ?? '',
   email: r.email ?? '',
+  tmUrl: r.tm_url ?? '',
   photos: Array.isArray(r.photos) ? r.photos : [],
 })
 
@@ -89,6 +91,7 @@ const toRow = (p: Player): Row => ({
   phone: p.phone,
   ig: p.ig,
   email: p.email,
+  tm_url: p.tmUrl,
   photos: p.photos,
 })
 
@@ -122,6 +125,7 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
       .from(PLAYERS_TABLE)
       .select('*')
       .order('created_at', { ascending: false })
+    console.log('[store] fetch result:', { count: data?.length, err: err?.message })
     if (err) {
       setError(err.message)
       // Fall back to the last cached snapshot so the app still works offline.

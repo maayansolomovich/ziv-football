@@ -57,6 +57,7 @@ export function Profile() {
   )
 
   const hasContract = !!(p.contractFile || p.signed)
+  const hasTm = !!p.tmUrl?.trim()
 
   return (
     <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 120 }}>
@@ -199,12 +200,16 @@ export function Profile() {
 
         {/* transfermarkt */}
         <TouchableOpacity
-          onPress={() => Linking.openURL('https://www.transfermarkt.com/schnellsuche/ergebnis/schnellsuche?query=' + encodeURIComponent(p.name))}
-          style={{ marginTop: 22, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 9, padding: 15, borderRadius: 16, backgroundColor: C.card, borderWidth: 1, borderColor: C.line2 }}
+          onPress={() => Linking.openURL(hasTm ? p.tmUrl : 'https://www.transfermarkt.com/schnellsuche/ergebnis/schnellsuche?query=' + encodeURIComponent(p.name))}
+          style={{ marginTop: 22, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 9, padding: 15, borderRadius: 16, backgroundColor: C.card, borderWidth: 1, borderColor: hasTm ? C.green + '55' : C.line2 }}
         >
+          {hasTm ? <Feather name="check-circle" size={15} color={C.green} /> : null}
           <Txt style={{ fontFamily: FONT.brand, fontSize: 13.5, letterSpacing: 0.6, color: C.green }}>TRANSFERMARKT</Txt>
           <Txt weight="bold" style={{ fontSize: 15, color: C.t2 }}>↗</Txt>
         </TouchableOpacity>
+        <Txt style={{ fontSize: 11, color: hasTm ? C.green : C.t3, marginTop: 7 }}>
+          {hasTm ? 'קישור פרופיל מקושר' : 'אין קישור — חיפוש לפי שם'}
+        </Txt>
 
         {/* create post */}
         <TouchableOpacity onPress={() => nav.go('studio')} activeOpacity={0.85} style={{ marginTop: 12 }}>
