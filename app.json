@@ -1,17 +1,28 @@
 {
   "expo": {
-    "name": "ziv-football",
+    "name": "סוכנות זיו",
     "slug": "ziv-football",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#0a0a0d",
+    "splash": {
+      "backgroundColor": "#0a0a0d",
+      "resizeMode": "contain",
+      "image": "./assets/icon.png"
+    },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "il.co.zsm.agency",
+      "infoPlist": {
+        "NSPhotoLibraryUsageDescription": "האפליקציה משתמשת בגלריה כדי להוסיף תמונות שחקנים."
+      }
     },
     "android": {
+      "package": "il.co.zsm.agency",
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
+        "backgroundColor": "#0a0a0d",
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
@@ -20,6 +31,7 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": ["expo-font"]
   }
 }
